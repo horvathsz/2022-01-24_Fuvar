@@ -10,7 +10,7 @@ namespace _2022_01_24_Fuvar
     {
         static void Main(string[] args)
         {
-            
+
             Console.ReadKey();
         }
     }
