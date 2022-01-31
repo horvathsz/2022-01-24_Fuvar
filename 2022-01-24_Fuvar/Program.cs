@@ -35,7 +35,63 @@ namespace _2022_01_24_Fuvar
                 }
             }
 
-            Console.Write($"4. feladat: {db} fuvar alatt: {Bevétel}$"); 
+            Console.Write($"4. feladat: {db} fuvar alatt: {Bevétel}$");
+
+            //5
+
+            int bankkártyás = 0;
+            int készpénz = 0;
+            int ingyenes = 0;
+            int vitatott = 0;
+            int ismeretlen = 0;
+
+            foreach (var f in fuvarok)
+            {
+                if (f.Fizetésmód == "bankkártya")
+                {
+                    bankkártyás++;
+                }
+                if (f.Fizetésmód == "készpénz")
+                {
+                    készpénz++;
+                }
+                if (f.Fizetésmód =="ingyenes")
+                {
+                    ingyenes++;
+                }
+                if (f.Fizetésmód =="vitatott")
+                {
+                    vitatott++;
+                }
+                if (f.Fizetésmód =="ismeretlen")
+                {
+                    ismeretlen++;
+
+                }
+
+            }
+
+
+            //5.b
+
+            Dictionary<string, int> stat = new Dictionary<string, int>();
+            foreach (var f in fuvarok)
+            {
+                if (stat.ContainsKey(f.Fizetésmód))
+                {
+                    stat[f.Fizetésmód]++;
+                }
+                else
+                {
+                    stat.Add(f.Fizetésmód, 1);
+                }
+            }
+            Console.WriteLine($"5. feladat:");
+            foreach (var s in stat)
+            {
+                Console.WriteLine($"\t{s.Key}: {s.Value} fuvar");
+            }
+            
 
             Console.ReadKey();
         }
