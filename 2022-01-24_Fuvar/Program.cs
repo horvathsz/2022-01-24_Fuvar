@@ -37,14 +37,16 @@ namespace _2022_01_24_Fuvar
 
             Console.Write($"4. feladat: {db} fuvar alatt: {Bevétel}$");
 
-            //5
+            
 
+            
+            //5. feladat
             int bankkártyás = 0;
             int készpénz = 0;
             int ingyenes = 0;
             int vitatott = 0;
             int ismeretlen = 0;
-
+            
             foreach (var f in fuvarok)
             {
                 if (f.Fizetésmód == "bankkártya")
@@ -70,9 +72,9 @@ namespace _2022_01_24_Fuvar
                 }
 
             }
+          
 
-
-            //5.b
+            /*5.b
 
             Dictionary<string, int> stat = new Dictionary<string, int>();
             foreach (var f in fuvarok)
@@ -87,11 +89,20 @@ namespace _2022_01_24_Fuvar
                 }
             }
             Console.WriteLine($"5. feladat:");
-            foreach (var s in stat)
+            foreach (var s in Stat)
             {
                 Console.WriteLine($"\t{s.Key}: {s.Value} fuvar");
-            }
-            
+            }*/
+
+
+
+
+            fuvarok
+                .GroupBy(x => x.Fizetésmód)
+                .Select(g => new { FizetésMód = g.Key, db = g.Count() })
+                .ToList()
+                .ForEach(x => Console.WriteLine($"\t{x.FizetésMód}: {x.db}"));
+
 
             Console.ReadKey();
         }
